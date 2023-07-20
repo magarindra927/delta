@@ -1,0 +1,35 @@
+{% extends 'layouts/main.html' %}
+
+{% block content %}
+<div class="lod-news">
+    <div class="container">
+        <div class="row">
+            {% for lod in lodData %}
+            <div class="col-md-6">
+                <h2>{{ lod.name }}</h2>
+                <div class="row cn-slider">
+                    {% for info in lod.info_set.all %}
+                    <h1>{{ info.title }}</h1>
+                    <div class="col-md-6">
+                        <div class="card">
+                            {% if info.photo %}
+                            <img src="{{ info.photo.url }}" class="card-img-top" alt="something is wrong">
+                            {% endif %}
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
